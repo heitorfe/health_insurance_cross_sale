@@ -4,7 +4,7 @@ import pandas as pd
 from flask import Flask, request, Response
 
 #loading model
-model = pickle.load(xgb_model_tunned, open(r'/src/model/xgb_model.pkl', 'rb'))
+model = pickle.load(open(r'/src/model/xgb_model.pkl', 'rb'))
 
 #initialize API
 app = Flask(__name__)
