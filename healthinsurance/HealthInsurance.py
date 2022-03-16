@@ -40,7 +40,7 @@ class HealthInsurance():
         data = pd.concat([x_train, y_train], axis=1)
 
         #annual premium
-        df3['annual_premium'] = self.annual_premium_scaler.transform(df3[['annual_premium']].values)
+        data['annual_premium'] = self.annual_premium_scaler.transform(data[['annual_premium']].values)
 
         #age
         data['age'] = self.age_scaler.transform(data[['age']].values)
@@ -61,7 +61,7 @@ class HealthInsurance():
         data.loc[:,'gender'] = data['gender'].map(self.gender_encode)
 
         #features selected
-        cols_selected = ['vintage','annual_premium','age','region_code','vehicle_damage','policy_sales_channel','previously_insured']
+        cols_selected =['vintage','annual_premium','age','region_code','vehicle_damage','policy_sales_channel','previously_insured']
         
 
         return data[cols_selected]
