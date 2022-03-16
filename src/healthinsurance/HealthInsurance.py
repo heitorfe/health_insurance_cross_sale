@@ -2,12 +2,12 @@ class HealthInsurance():
     def __init__(self):
         #paths
         self.path = '/home/heitor/repos/health_insurance_cross_sale/'
-        self.annual_premium_scaler = pickle.load(ss, open(self.path + r'../src/features/annual_premium_scaler.pkl', 'rb'))
-        self.age_scaler =  pickle.load(mms_age, open(self.path + r'../src/features/age_scaler.pkl', 'rb'))
-        self.vintage_scaler = pickle.load(mms_vintage, open(self.path + r'../src/features/vintage_scaler.pkl', 'rb'))
-        self.region_code_encode = pickle.load(target_encode_region_code, open(self.path + r'../src/features/region_code_encode.pkl', 'rb'))
-        self.policy_sales_channel_encode = pickle.load(fe_policy_sales_channel, open(self.path + r'../src/features/policy_sales_channel_encode.pkl', 'rb'))
-        self.gender_encode = pickle.load(target_encode_gender, open(self.path + r'../src/features/gender_encode.pkl', 'rb'))
+        self.annual_premium_scaler = pickle.load(ss, open(self.path + r'/src/features/annual_premium_scaler.pkl', 'rb'))
+        self.age_scaler =  pickle.load(mms_age, open(self.path + r'/src/features/age_scaler.pkl', 'rb'))
+        self.vintage_scaler = pickle.load(mms_vintage, open(self.path + r'/src/features/vintage_scaler.pkl', 'rb'))
+        self.region_code_encode = pickle.load(target_encode_region_code, open(self.path + r'/src/features/region_code_encode.pkl', 'rb'))
+        self.policy_sales_channel_encode = pickle.load(fe_policy_sales_channel, open(self.path + r'/src/features/policy_sales_channel_encode.pkl', 'rb'))
+        self.gender_encode = pickle.load(target_encode_gender, open(self.path + r'/src/features/gender_encode.pkl', 'rb'))
         
                                                                                     
     def data_cleaning(data):

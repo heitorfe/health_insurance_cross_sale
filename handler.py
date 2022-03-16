@@ -4,7 +4,7 @@ import pandas as pd
 from flask import Flask, request, Response
 
 #loading model
-model = pickle.load(xgb_model_tunned, open(r'../src/model/xgb_model.pkl', 'rb'))
+model = pickle.load(xgb_model_tunned, open(r'/src/model/xgb_model.pkl', 'rb'))
 
 #initialize API
 app = Flask(__name__)
@@ -41,7 +41,8 @@ def health_insurance_predict():
         return Response('{}', status = 200, mimetype = 'application/json')
 
 if __name__ == 'main':
-    app.run('0.0.0.0', debug=True)
+    port = os.environ.get('PORT', 5000)
+    app.run('0.0.0.0', port=port)
             
             
             
