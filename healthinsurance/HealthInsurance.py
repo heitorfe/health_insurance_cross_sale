@@ -1,12 +1,12 @@
 class HealthInsurance():
     def __init__(self):
         #paths
-        self.annual_premium_scaler = pickle.load(ss, open('/src/features/annual_premium_scaler.pkl', 'rb'))
-        self.age_scaler =  pickle.load(mms_age, open('/src/features/age_scaler.pkl', 'rb'))
-        self.vintage_scaler = pickle.load(mms_vintage, open('/src/features/vintage_scaler.pkl', 'rb'))
-        self.region_code_encode = pickle.load(target_encode_region_code, open('/src/features/region_code_encode.pkl', 'rb'))
-        self.policy_sales_channel_encode = pickle.load(fe_policy_sales_channel, open('/src/features/policy_sales_channel_encode.pkl', 'rb'))
-        self.gender_encode = pickle.load(target_encode_gender, open('/src/features/gender_encode.pkl', 'rb'))
+        self.annual_premium_scaler = pickle.load(open('/src/features/annual_premium_scaler.pkl', 'rb'))
+        self.age_scaler =  pickle.load(open('/src/features/age_scaler.pkl', 'rb'))
+        self.vintage_scaler = pickle.load(open('/src/features/vintage_scaler.pkl', 'rb'))
+        self.region_code_encode = pickle.load(open('/src/features/region_code_encode.pkl', 'rb'))
+        self.policy_sales_channel_encode = pickle.load( open('/src/features/policy_sales_channel_encode.pkl', 'rb'))
+        self.gender_encode = pickle.load(open('/src/features/gender_encode.pkl', 'rb'))
         
                                                                                     
     def data_cleaning(data):
@@ -17,13 +17,13 @@ class HealthInsurance():
         new_cols = list(map(snakecase, old_cols))
         data.columns = new_cols
 
-        #changing types
+#         #changing types
 
-        data['vehicle_damage'] = data['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
-        data['policy_sales_channel'] = data['policy_sales_channel'].astype(int)
-        data['annual_premium'] = data['annual_premium'].astype(int)
-        data['region_code'] = data['region_code'].astype(int)
-        data['vehicle_damage'] = data['vehicle_damage'].astype(int)
+#         data['vehicle_damage'] = data['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
+#         data['policy_sales_channel'] = data['policy_sales_channel'].astype(int)
+#         data['annual_premium'] = data['annual_premium'].astype(int)
+#         data['region_code'] = data['region_code'].astype(int)
+#         data['vehicle_damage'] = data['vehicle_damage'].astype(int)
         return data
                                                                                      
                                                                                      

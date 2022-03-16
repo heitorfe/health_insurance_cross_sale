@@ -9,6 +9,7 @@ model = pickle.load(open(r'/src/model/xgb_model.pkl', 'rb'))
 #initialize API
 app = Flask(__name__)
 
+print('API initialize')
 @app.route('/predict', methods=['POST'])
 def healthinsurance_predict():
     test_json = request.get_json()
@@ -21,18 +22,23 @@ def healthinsurance_predict():
             
         #Initialize HealthInsurance Class
         pipeline = HealthInsurance()
+        print('pipeline')
             
         #data cleaning
         data = data_cleaning(test_raw)
+        print('data cleaning')
         
         #feature engineering
         data = feature_engineering(data)
+        print('feature engineering')
         
         #data preparation
         data = data_preparation(data)
+        print('data preparation')
         
         #prediction
         df_response = get_prediction(model, test_raw, data)
+        print('prediction')
             
         return df_response
         
