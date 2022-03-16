@@ -1,4 +1,8 @@
-class HealthInsurance():
+import pickle
+import numpy  as np
+import pandas as pd
+
+class HealthInsurance(object):
     def __init__(self):
         #paths
         self.annual_premium_scaler = pickle.load(open('/src/features/annual_premium_scaler.pkl', 'rb'))
@@ -9,7 +13,7 @@ class HealthInsurance():
         self.gender_encode = pickle.load(open('/src/features/gender_encode.pkl', 'rb'))
         
                                                                                     
-    def data_cleaning(data):
+    def data_cleaning(self, data):
                                                                                      #Rename columns
         old_cols = ['id', 'Gender', 'Age', 'DrivingLicense', 'RegionCode','PreviouslyInsured', 'Vehicle_Age', 'VehicleDamage', 'AnnualPremium','PolicySalesChannel', 'Vintage', 'Response']
         snakecase = lambda x: inflection.underscore(x)
@@ -27,13 +31,13 @@ class HealthInsurance():
         return data
                                                                                      
                                                                                      
-    def feature_engineering(data):
+    def feature_engineering(self, data):
         data['vehicle_age'] = data['vehicle_age'].apply(lambda x: 'less_than_1_year' if x =='< 1 Year' else
                                                                   'more_than_2_years' if x== '> 2 Years' else
                                                                   'between_1_and_2_years' )
         return data
                                                                                      
-    def data_preparation(data):
+    def data_preparation(self, data):
         X = data.drop('response', axis=1)
         y = data['response'].copy()
         x_train, x_validation, y_train, y_validation = ms.train_test_split(X, y, test_size=0.2)
@@ -73,4 +77,4 @@ class HealthInsurance():
         #join prediction into original data
         original_data['score'] = pred
         
-        return original_data.to_json(orient='records',data_format='iso')
+        return original_data.to_json(orient='records', date_format='iso')
