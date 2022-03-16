@@ -9,8 +9,8 @@ model = pickle.load(xgb_model_tunned, open(r'/src/model/xgb_model.pkl', 'rb'))
 #initialize API
 app = Flask(__name__)
 
-@app.route('healthinsurance/predict', methods=['POST'])
-def health_insurance_predict():
+@app.route('/predict', methods=['POST'])
+def healthinsurance_predict():
     test_json = request.get_json()
     if test_json: #there is data
         if isinstance(test_jason, dict):  #unique example 
