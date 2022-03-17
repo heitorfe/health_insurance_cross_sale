@@ -1,8 +1,9 @@
 print('init1')
-from healthinsurance.HealthInsurance import HealthInsurance
 import pickle
 import pandas as pd
 from flask import Flask, request, Response
+from healthinsurance.HealthInsurance import HealthInsurance
+
 
 print('init2')
 #loading model
@@ -49,8 +50,8 @@ def healthinsurance_predict():
         return Response('{}', status = 200, mimetype = 'application/json')
 
 if __name__ == '__main__':
-    port = os.environ.get('PORT', 5000)
-    app.run(host='0.0.0.0', port=port)
+    port = os.environ.get( 'PORT', 5000)
+    app.run( host='0.0.0.0', port=port )
             
             
             
