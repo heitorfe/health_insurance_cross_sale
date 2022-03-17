@@ -1,9 +1,10 @@
-from healthinsurance import HealthInsurance
+print('init1')
+from healthinsurance.HealthInsurance import HealthInsurance
 import pickle
 import pandas as pd
 from flask import Flask, request, Response
 
-print('init')
+print('init2')
 #loading model
 model = pickle.load(open('src/model/xgb_model.pkl', 'rb'))
 
