@@ -14,20 +14,10 @@ class HealthInsurance(object):
         
                                                                                     
     def data_cleaning(self, data):
-                                                                                     #Rename columns
-        old_cols = ['id', 'Gender', 'Age', 'DrivingLicense', 'RegionCode','PreviouslyInsured', 'Vehicle_Age', 'VehicleDamage', 'AnnualPremium','PolicySalesChannel', 'Vintage', 'Response']
-        snakecase = lambda x: inflection.underscore(x)
+                                                                                       #Rename columns
 
-        new_cols = list(map(snakecase, old_cols))
-        data.columns = new_cols
 
-#         #changing types
-
-#         data['vehicle_damage'] = data['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
-#         data['policy_sales_channel'] = data['policy_sales_channel'].astype(int)
-#         data['annual_premium'] = data['annual_premium'].astype(int)
-#         data['region_code'] = data['region_code'].astype(int)
-#         data['vehicle_damage'] = data['vehicle_damage'].astype(int)
+        data.columns = [x.lower() for x in data.columns]
         return data
                                                                                      
                                                                                      
@@ -38,10 +28,6 @@ class HealthInsurance(object):
         return data
                                                                                      
     def data_preparation(self, data):
-#         X = data.drop('response', axis=1)
-#         y = data['response'].copy()
-#         x_train, x_validation, y_train, y_validation = ms.train_test_split(X, y, test_size=0.2)
-#         data = pd.concat([x_train, y_train], axis=1)
 
         #annual premium
         data['annual_premium'] = self.annual_premium_scaler.transform(data[['annual_premium']].values)
