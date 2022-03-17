@@ -5,12 +5,12 @@ import pandas as pd
 class HealthInsurance(object):
     def __init__(self):
         #paths
-        self.annual_premium_scaler = pickle.load(open('src/features/annual_premium_scaler.pkl', 'rb'))
-        self.age_scaler =  pickle.load(open('src/features/age_scaler.pkl', 'rb'))
-        self.vintage_scaler = pickle.load(open('src/features/vintage_scaler.pkl', 'rb'))
-        self.region_code_encode = pickle.load(open('src/features/region_code_encode.pkl', 'rb'))
-        self.policy_sales_channel_encode = pickle.load( open('src/features/policy_sales_channel_encode.pkl', 'rb'))
-        self.gender_encode = pickle.load(open('src/features/gender_encode.pkl', 'rb'))
+        self.annual_premium_scaler = pickle.load(open('features/annual_premium_scaler.pkl', 'rb'))
+        self.age_scaler =  pickle.load(open('features/age_scaler.pkl', 'rb'))
+        self.vintage_scaler = pickle.load(open('features/vintage_scaler.pkl', 'rb'))
+        self.region_code_encode = pickle.load(open('features/region_code_encode.pkl', 'rb'))
+        self.policy_sales_channel_encode = pickle.load( open('features/policy_sales_channel_encode.pkl', 'rb'))
+        self.gender_encode = pickle.load(open('features/gender_encode.pkl', 'rb'))
         
                                                                                     
     def data_cleaning(self, data):
