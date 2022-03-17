@@ -1,0 +1,11 @@
+,id,gender,age,driving_license,region_code,previously_insured,vehicle_age,vehicle_damage,annual_premium,policy_sales_channel,vintage
+366727,366728,Female,53,1,28,0,more_than_2_years,1,42404,124,65
+53871,53872,Female,21,1,16,1,less_than_1_year,0,15924,152,251
+309250,309251,Male,56,1,35,0,between_1_and_2_years,1,38041,124,127
+308368,308369,Female,77,1,28,1,between_1_and_2_years,0,35797,60,241
+54274,54275,Male,24,1,28,1,less_than_1_year,0,28643,152,158
+226899,226900,Male,29,1,28,1,between_1_and_2_years,0,34982,26,157
+138406,138407,Female,21,1,46,1,less_than_1_year,0,27738,160,55
+355470,355471,Male,42,1,28,0,between_1_and_2_years,1,25369,54,32
+356841,356842,Female,27,1,41,1,less_than_1_year,0,30845,152,52
+235215,235216,Female,32,1,15,0,less_than_1_year,1,24806,152,131
