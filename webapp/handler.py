@@ -5,7 +5,7 @@ from flask import Flask, request, Response
 
 print('init')
 #loading model
-model = pickle.load(open(r'/src/model/xgb_model.pkl', 'rb'))
+model = pickle.load(open('src/model/xgb_model.pkl', 'rb'))
 
 #initialize API
 app = Flask(__name__)
