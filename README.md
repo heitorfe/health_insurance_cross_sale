@@ -49,18 +49,31 @@ Using the Boruta algorithm to select the most important features to get the best
 
 Training different Machine Learning models and comparing errors. The choosen method was the XGBoost Regressor because of the speed and accuracy of the model. 
 
-![Performances without fine tuning](https://user-images.githubusercontent.com/77629603/155387296-541ac158-9c6c-44f5-913c-40b1aa2b02a4.png)
+![image](https://user-images.githubusercontent.com/77629603/159000872-cfde09d8-137a-4f50-a43d-8d6e32e0f25a.png)
 
 
 ## 3.6. Error Translation
 
 Giving business meaning to the project, translating accuracy in values to the business.
 
-## 3.7. Deploy and Telegram BOT
+The metrics was:
+*Precision at k*
+How much the predict is correct in the top k of the list. 
 
-Deploy in the Heroku Cloud and configurating Flask API request by a Telegram Bot. 
+*Recall at k*
+How much response = 1 the model predicts correctly in the top k of the total responses = 1 of the list
 
-Telegram bot username: @rossmann_salesp_bot
+I choose k = 20.000 due to the problem context. The result of the model chosen was:
+![image](https://user-images.githubusercontent.com/77629603/159001525-67067def-b65c-44c1-b387-3fb3a03a38f5.png)
+
+Translating into business languege we can compare the costs of prospecting randomly vs based in the model.
+![image](https://user-images.githubusercontent.com/77629603/159006315-6457fce6-802d-4ab4-87df-bea41f1de329.png)
+
+We can get 90% of the interested contacting 30% of the total base. In terms of costs, to get all these 90% the company would spent 66% less.
+
+## 3.7. Deploy and Google Sheets API
+
+Deploy in the Heroku Cloud and configurating Flask API request by a Google Sheets.
 
 # 4. Results and Conclusion
 
