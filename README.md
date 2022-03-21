@@ -1,4 +1,4 @@
-# health_insurance_cross_sale
+# Health Insurance Cross Sell
 ![image](https://user-images.githubusercontent.com/77629603/158879224-d703e986-a8e4-4229-a384-2252c879f8ba.png)
 
 # 1. Context
@@ -43,11 +43,11 @@ Using normalization, rescaling and encoding to prepare the data to the Machine L
 
 ## 3.4. Feature Selection
 
-Using the Boruta algorithm to select the most important features to get the best Machine Learning performance.
+Using the Extra Trees Classifier to select the most important features to get the best Machine Learning performance.
 
 ## 3.5. Machine Learning Model
 
-Training different Machine Learning models and comparing errors. The choosen method was the XGBoost Regressor because of the speed and accuracy of the model. 
+Training different Machine Learning models and comparing errors. The choosen method was the XGBoost Regressor because of the good speed and accuracy of the model. 
 
 ![image](https://user-images.githubusercontent.com/77629603/159000872-cfde09d8-137a-4f50-a43d-8d6e32e0f25a.png)
 
@@ -64,55 +64,71 @@ How much the predict is correct in the top k of the list.
 How much response = 1 the model predicts correctly in the top k of the total responses = 1 of the list
 
 I choose k = 20.000 due to the problem context. The result of the model chosen was:
+
 ![image](https://user-images.githubusercontent.com/77629603/159001525-67067def-b65c-44c1-b387-3fb3a03a38f5.png)
 
 Translating into business languege we can compare the costs of prospecting randomly vs based in the model.
+
 ![image](https://user-images.githubusercontent.com/77629603/159006315-6457fce6-802d-4ab4-87df-bea41f1de329.png)
 
 We can get 90% of the interested contacting 30% of the total base. In terms of costs, to get all these 90% the company would spent 66% less.
 
+### 3.6.1 Cumulative Gain Curve
+
+![image](https://user-images.githubusercontent.com/77629603/159339821-a726205f-2221-4296-b5bb-5c730ab1ba47.png)
+
+
+### 3.6.2 Lift Curve
+
+![image](https://user-images.githubusercontent.com/77629603/159339775-2c41edff-4a35-4ba0-b502-d1b79a5c596a.png)
+
+### 3.6.3 ROC Curve
+
+![image](https://user-images.githubusercontent.com/77629603/159339995-ce36f38d-1301-435d-bfd1-66e77029be4b.png)
+
+
 ## 3.7. Deploy and Google Sheets API
 
-Deploy in the Heroku Cloud and configurating Flask API request by a Google Sheets.
+Deploy in the Heroku Cloud and configurating Flask API request by a Google Sheets. The business team can easily use the trained model with new data to get the propensity score of each contact.
 
 # 4. Results and Conclusion
 
-## 4.1. Main Hypotesis 
+## 4.1. Main Concluions of Exploratory Data Analisys 
 
-The main hypotesis confirmed in the EDA step:
+The main conclusios found in the EDA was:
 
-### H1. Stores with larger assortments should sell more.
-False. Stores with larger assortments should sell less.
+### C1. Age
 
-![Sales sum by assortment](https://user-images.githubusercontent.com/77629603/155387884-6c33a7be-82e5-4c57-8648-28bf0f217aae.png)
+![image](https://user-images.githubusercontent.com/77629603/159340818-64537512-d512-4c02-9158-928b263b1621.png)
+![image](https://user-images.githubusercontent.com/77629603/159340839-43426bfd-0d92-4be8-85a2-8ecb617ed5ac.png)
+
+The volume of negative resposes is much larger than the positive ones. Looking into the postive responses, the target is in the middle age (about 40-50 years old). Looking into the negative responses, the conclusion is that the young people seems to be less interested in the product.
+
+### C2. Annual premium.
+
+Definition: The amount customer needs to pay as premium in the year
+
+![image](https://user-images.githubusercontent.com/77629603/159341808-cc987722-f6a7-4ef9-ae89-4ead0dbf417e.png)
+
+The distribution is almost the same, the only difference is the volume of the data. Conclusion: This variable is not helpful alone.
 
 
-### H2. Stores with closer competitors should sell less.
-False. Stores with closer competitors sell more.
+### C3. Policy sales channel
 
-![Sales by competition distance (bin = 0-1000)](https://user-images.githubusercontent.com/77629603/155381618-a59fdbc2-e4af-45dd-8458-3159ddc01eac.png)
+Definition: Anonymized code for the channel of outreaching to the customer ie. Different agents, over mail, over phone, in person, etc.
 
+![image](https://user-images.githubusercontent.com/77629603/159342410-aa0178cf-63bd-4b50-9074-4a68f66c888c.png)
 
-### H3. Stores with longer active promotions should sell more.
-False. We can see that sales increase in the standard promos and decreases in the extended promos.
-(Negative promo duration is regular promo, positive promo duration is extanded promo)
+The most part of the distribution is similar, but it would be interested to check regions with differences between responses 0 and 1.
 
-![Regplot representing sales by promo duration](https://user-images.githubusercontent.com/77629603/155382386-6c6462ab-0820-4dae-a1ca-51ea9a0aad33.png)
+![image](https://user-images.githubusercontent.com/77629603/159343253-eb5287bf-c1f7-4798-ac1e-d05a65e43784.png)
+Table with the region with more responses ordered by the percentage of positive response.
 
 ## 4.2.Conclusion
-The model generates a dataframe with the prediction of each store and the respectives worst and best scenarios. 
-The CFO now can know the budget available to renovate the stores, with 90% accuracy.
+The model generates a the propensity score to each new contact in the base. The business can easily use the application in Google Sheets to get the more propensity contacts to call. 
+The precision at top 20.000 is about 33,5%.
 
-![First 15 rows of the prediction dataset.](https://user-images.githubusercontent.com/77629603/155379600-1321b4d9-6db2-4941-80cf-96012798fe00.png)
-
-The user can get the results by Telegram. Here is some [demonstration](https://www.linkedin.com/posts/heitor-felix_datascience-datadriven-business-activity-6902361790051606528-2Fjo)!
-
-## 4.3. Machine Learning Performance
-
-Here is the demonstration of the model prediction vs real sales by date
-
-![Seaborn lineplot](https://user-images.githubusercontent.com/77629603/155380531-060fbf29-4f30-486f-b875-4d3b0ead5178.png)
-
+The user can get the propensity score of new contact in the database by Google Sheets. Here is some [demonstration](https://drive.google.com/file/d/1Y79eRMHXxkv_mNFX9yVo1DeTa3Y1R9_l/view?usp=sharing)!
 
 # 5. Next Steps
 
@@ -121,4 +137,4 @@ Here is the demonstration of the model prediction vs real sales by date
 
 # 6. References
 
-The data is avaliable in this [page](https://www.kaggle.com/c/rossmann-store-sales)
+The data is avaliable in this [page](https://www.kaggle.com/anmolkumar/health-insurance-cross-sell-prediction)
