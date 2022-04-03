@@ -27,7 +27,7 @@ The business team wants to get the highest precision possible to get new clients
 
 -Propensity score will be returned in Google Sheets API
 
-#3. Solution Development
+# 3. Solution Development
 
 ## 3.1. Data Description and Feature Engineering
 
