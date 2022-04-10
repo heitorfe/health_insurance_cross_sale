@@ -78,9 +78,7 @@ I choose k = 20.000 due to the problem context. The result of the model chosen w
 
 ![image](https://user-images.githubusercontent.com/77629603/159001525-67067def-b65c-44c1-b387-3fb3a03a38f5.png)
 
-Translating into business languege we can compare the costs of prospecting randomly vs based in the model.
-
-![image](https://user-images.githubusercontent.com/77629603/159006315-6457fce6-802d-4ab4-87df-bea41f1de329.png)
+**More in the conclusion below**
 
 ## 3.7. Deploy and Google Sheets API
 
