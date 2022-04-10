@@ -1,5 +1,7 @@
 # Health Insurance Cross Sell
-![image](https://user-images.githubusercontent.com/77629603/158879224-d703e986-a8e4-4229-a384-2252c879f8ba.png)
+
+<img src="https://user-images.githubusercontent.com/77629603/158879224-d703e986-a8e4-4229-a384-2252c879f8ba.png" alt="" style="width:500px;"/>
+
 
 # 1. Context
 
@@ -7,7 +9,7 @@ This project is based in a Kaggle Challenge wich simulates a business problem. A
 
 # 2. Challenge
 
-Find out what type of customer is the more propense to buy the product and give the list to the business team. They have a budget to contact 20.000 people, we want to get the biggest number of clients 
+Find out what type of customer is the more propense to buy the product and give the list to the business team. They have a budget to contact 20.000 people, we want to get the biggest number of clients with this budget. 
 
 ## 2.1. Problem
 
@@ -15,27 +17,27 @@ The business team wants to get the highest precision possible to get new clients
 
 ## 2.2. Causes
 
--There are nothing to order by propensity to buy
+* There is nothing to sort contact list in order of propensity;
 
--Current method to call clients is randomly
+* Current method to call clients is random;
 
--There is a specif budget to prospect clients
+* There is a limited budget to prospect clients.
 
 ## 2.3. Solution
 
--Using Machine Learning model get propensity score of each client
+* Using Machine Learning model get propensity score of each client (Learn to rank);
 
--Propensity score will be returned in Google Sheets API
+* Propensity score will be returned in Google Sheets API.
 
 # 3. Solution Development
 
-## 3.1. Data Description and Feature Engineering
+## 3.1. Data Description
 
-Checking the shape of the datase, nulls and filling the nulls values. 
+Checking the shape of the datase, nulls and filling the nulls values. The dataset has 381109 rows and 12 columns.
 
 ## 3.2. Exploratory Data Analysis
 
-Trying to get insights by data analysis with graphs, histograms, plotlines and barplot. Also checking the correlation of the features and testing hypotesis.
+Trying to get insights by data analysis with graphs, histograms, plotlines and barplots. Also checking the correlation of the features and testing hypotesis. 
 
 ## 3.3. Data Preparation
 
@@ -50,6 +52,15 @@ Using the Extra Trees Classifier to select the most important features to get th
 Training different Machine Learning models and comparing errors. The choosen method was the XGBoost Regressor because of the good speed and accuracy of the model. 
 
 ![image](https://user-images.githubusercontent.com/77629603/159000872-cfde09d8-137a-4f50-a43d-8d6e32e0f25a.png)
+
+k = 20.000
+
+<details>
+<summary>Note</summary>
+
+  [Learn about classification metrics here](https://medium.com/@m_n_malaeb/recall-and-precision-at-k-for-recommender-systems-618483226c54)
+
+</details>
 
 
 ## 3.6. Error Translation
@@ -71,31 +82,15 @@ Translating into business languege we can compare the costs of prospecting rando
 
 ![image](https://user-images.githubusercontent.com/77629603/159006315-6457fce6-802d-4ab4-87df-bea41f1de329.png)
 
-We can get 90% of the interested contacting 30% of the total base. In terms of costs, to get all these 90% the company would spent 66% less.
-
-### 3.6.1 Cumulative Gain Curve
-
-![image](https://user-images.githubusercontent.com/77629603/159339821-a726205f-2221-4296-b5bb-5c730ab1ba47.png)
-
-
-### 3.6.2 Lift Curve
-
-![image](https://user-images.githubusercontent.com/77629603/159339775-2c41edff-4a35-4ba0-b502-d1b79a5c596a.png)
-
-### 3.6.3 ROC Curve
-
-![image](https://user-images.githubusercontent.com/77629603/159339995-ce36f38d-1301-435d-bfd1-66e77029be4b.png)
-
-
 ## 3.7. Deploy and Google Sheets API
 
-Deploy in the Heroku Cloud and configurating Flask API request by a Google Sheets. The business team can easily use the trained model with new data to get the propensity score of each contact.
+Deploy in the Heroku Cloud and configurating Flask API request by a Google Sheets. The business team can easily use the trained model with new data to get the propensity score of each contact and rank the new list.
 
 # 4. Results and Conclusion
 
 ## 4.1. Main Concluions of Exploratory Data Analisys 
 
-The main conclusios found in the EDA was:
+The main conclusions found in the EDA was:
 
 ### C1. Age
 
@@ -125,15 +120,32 @@ The most part of the distribution is similar, but it would be interested to chec
 Table with the region with more responses ordered by the percentage of positive response.
 
 ## 4.2.Conclusion
+
 The model generates a the propensity score to each new contact in the base. The business can easily use the application in Google Sheets to get the more propensity contacts to call. 
-The precision at top 20.000 is about 33,5%.
+Also, its available the report with data visualization in the notebook with all the insights.
+
 
 The user can get the propensity score of new contact in the database by Google Sheets. Here is some [demonstration](https://drive.google.com/file/d/1Y79eRMHXxkv_mNFX9yVo1DeTa3Y1R9_l/view?usp=sharing)!
 
+## 4.3. Cumulative gains
+
+
+![image](https://user-images.githubusercontent.com/77629603/159339821-a726205f-2221-4296-b5bb-5c730ab1ba47.png)
+
+| calls  | % of base | % gain baseline | % gain model |
+|--------|-----------|-----------------|--------------|
+| 20.000 | 26%       | 26%             | 80%          |
+| 30.000 | 39%       | 39%             | >85%         |
+| 40.000 | 52,5%     | 52,5%           | 100%         |
+
+Final conclusion: 
+* For 20.000 calls, we can reach about to 80% of the interested.
+* For 40.000 calls, we can reach about to 100% of the interested.
+
 # 5. Next Steps
 
-*Collecting feedback of the users and improve the usability if necessary
-*Improve the performance in the next CRISP cycle
+* Collecting feedback of the users and improve the usability if necessary
+* Improve the performance in the next CRISP cycle
 
 # 6. References
 
