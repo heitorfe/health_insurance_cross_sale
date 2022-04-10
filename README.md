@@ -13,7 +13,7 @@ Find out what type of customer is the more propense to buy the product and give 
 
 ## 2.1. Problem
 
-The business team wants to get the highest precision possible to get new clients with the investment.
+The business team wants to get the highest precision possible to get new clients with the investment, using the cross-sell strategy.
 
 ## 2.2. Causes
 
