@@ -115,6 +115,7 @@ Definition: Anonymized code for the channel of outreaching to the customer ie. D
 The most part of the distribution is similar, but it would be interested to check regions with differences between responses 0 and 1.
 
 ![image](https://user-images.githubusercontent.com/77629603/159343253-eb5287bf-c1f7-4798-ac1e-d05a65e43784.png)
+
 Table with the region with more responses ordered by the percentage of positive response.
 
 ## 4.2.Conclusion
