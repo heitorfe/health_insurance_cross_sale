@@ -78,9 +78,7 @@ I choose k = 20.000 due to the problem context. The result of the model chosen w
 
 ![image](https://user-images.githubusercontent.com/77629603/159001525-67067def-b65c-44c1-b387-3fb3a03a38f5.png)
 
-Translating into business languege we can compare the costs of prospecting randomly vs based in the model.
-
-![image](https://user-images.githubusercontent.com/77629603/159006315-6457fce6-802d-4ab4-87df-bea41f1de329.png)
+**More in the conclusion below**
 
 ## 3.7. Deploy and Google Sheets API
 
@@ -117,6 +115,7 @@ Definition: Anonymized code for the channel of outreaching to the customer ie. D
 The most part of the distribution is similar, but it would be interested to check regions with differences between responses 0 and 1.
 
 ![image](https://user-images.githubusercontent.com/77629603/159343253-eb5287bf-c1f7-4798-ac1e-d05a65e43784.png)
+
 Table with the region with more responses ordered by the percentage of positive response.
 
 ## 4.2.Conclusion
